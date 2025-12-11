@@ -62,3 +62,32 @@ The data flows through the following stages:
 ```bash
 git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 cd your-repo-name
+```
+**2. Set up environment variables. Create a .env file in the root directory and add your Snowflake/Database credentials.**
+
+```bash
+cp .env.example .env
+# Edit .env with your specific API keys and DB credentials
+```
+
+**3. Start Airflow Use Docker Compose to spin up the Airflow webserver and scheduler.**
+
+```bash
+
+docker-compose up -d
+```
+
+**4. Run dbt models (Manual trigger) If you want to run transformations outside of Airflow:**
+
+```bash
+cd dbt_project
+dbt debug
+dbt run
+```
+---
+## 7. Future Enhancements
+[ ] Dashboards: Connect Metabase or PowerBI to the final data marts.
+
+[ ] Alerting: Integrate Slack or Email notifications for DAG failures.
+
+[ ] Data Governance: Add Great Expectations for advanced data quality monitoring.
